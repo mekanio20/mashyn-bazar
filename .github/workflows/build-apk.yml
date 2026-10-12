@@ -1,0 +1,50 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main  # main dalına her push yapıldığında çalışır
+  workflow_dispatch: # GitHub arayüzünden manuel tetiklemek için
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodları Depodan Çek
+        uses: actions/checkout@v4
+
+      - name: Node.js Ortamını Kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Yarn Kurulumunu Etkinleştir (Corepack)
+        run: corepack enable
+
+      - name: Bağımlılıkları Yükle (Yarn)
+        run: yarn install
+
+      - name: Vue Projesini Derle (Build)
+        run: yarn build
+
+      - name: Capacitor Dosyalarını Senkronize Et
+        run: yarn cap sync android
+
+      - name: Java (JDK) Kurulumu
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Android SDK Kurulumu ve Gradle ile APK Derleme
+        working-directory: ./android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Üretilen APK Dosyasını Kaydet (Artifacts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug-apk.apk
