@@ -3,8 +3,8 @@ name: Build Android APK
 on:
   push:
     branches:
-      - main  # main dalına her push yapıldığında veya manuel tetiklendiğinde çalışır
-  workflow_dispatch: # GitHub arayüzünden "Run workflow" ile manuel başlatmayı sağlar
+      - main  # main dalına her push yapıldığında çalışır
+  workflow_dispatch: # GitHub arayüzünden manuel tetiklemek için
 
 jobs:
   build:
@@ -14,35 +14,43 @@ jobs:
       - name: Kodları Depodan Çek
         uses: actions/checkout@v4
 
+      # Corepack, package.json'daki "packageManager" alanına göre yarn 4'ü getirir.
+      # setup-node'un yarn cache'i kullanabilmesi için bu adım ondan önce olmalı.
+      - name: Yarn Kurulumunu Etkinleştir (Corepack)
+        run: corepack enable
+
+      # Capacitor 8 CLI en az Node 22 ister
       - name: Node.js Ortamını Kur
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '22'
+          cache: 'yarn'
 
-      - name: Bağımlılıkları Yükle (Dependencies)
-        run: npm install
+      - name: Bağımlılıkları Yükle (Yarn)
+        run: yarn install --immutable
 
       - name: Vue Projesini Derle (Build)
-        run: npm run build
+        run: yarn build
 
       - name: Capacitor Dosyalarını Senkronize Et
-        run: npx cap sync android
+        run: yarn cap sync android
 
+      # android/app/capacitor.build.gradle Java 21 ister
       - name: Java (JDK) Kurulumu
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
-      - name: Android SDK Kurulumu ve Gradle ile APK Derleme
+      - name: Gradle ile Debug APK Derleme
         working-directory: ./android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - name: Üretilen APK Dosyasını Kaydet (Artifacts)
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug-apk.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
