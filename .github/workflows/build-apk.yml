@@ -3,8 +3,8 @@ name: Build Android APK
 on:
   push:
     branches:
-      - main  # main dalına her push yapıldığında çalışır
-  workflow_dispatch: # GitHub arayüzünden manuel tetiklemek için
+      - main  # main dalına her push yapıldığında veya manuel tetiklendiğinde çalışır
+  workflow_dispatch: # GitHub arayüzünden "Run workflow" ile manuel başlatmayı sağlar
 
 jobs:
   build:
@@ -18,18 +18,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Yarn Kurulumunu Etkinleştir (Corepack)
-        run: corepack enable
-
-      - name: Bağımlılıkları Yükle (Yarn)
-        run: yarn install
+      - name: Bağımlılıkları Yükle (Dependencies)
+        run: npm install
 
       - name: Vue Projesini Derle (Build)
-        run: yarn build
+        run: npm run build
 
       - name: Capacitor Dosyalarını Senkronize Et
-        run: yarn cap sync android
+        run: npx cap sync android
 
       - name: Java (JDK) Kurulumu
         uses: actions/setup-java@v4
