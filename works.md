@@ -5,3 +5,6 @@
 - [x] Menyu sahypada Maglumatlar bolumi ayrylmaly
 - [x] Menyu sahypada Marka / Model / Yyl / sazlamasyna basylanda icinde 3 sany card cyksyn, onun icine basylanda crud cyksyn
 - [x] Menyu sahypada Renk ashagynda boshluk olmasin
+- [x] Androidde cykysh buttonuna basanda Cyndanam cykmak isleyarsinizmi confirm cyksyn hawa basanda cyksyn, menyudaki bir bolume girende androidde cykmak buttonuna basylanda menyu sahypasyna cyksyn
+- [x] Select basylanda search focus bolmasyn keyboard cykmasyn
+- [x] Headerdaky prev icony biraz bildirip dursun kicirak gorunyar shu wagt, Programma barada sahypasynda programmanyn dushundirilishi yazylsyn

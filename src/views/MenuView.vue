@@ -44,7 +44,14 @@ const item = 'flex h-14 w-full items-center justify-between rounded-xl bg-white 
     <GridSettings v-if="page === 'grid'" @back="page = ''" />
     <CatalogSettings v-if="page === 'catalog'" @back="page = ''" />
     <SubPage v-if="page === 'about'" :title="t('menu.about')" @back="page = ''">
-      <p class="text-slate-700">{{ t('menu.version') }}: {{ APP_VERSION }}</p>
+      <div class="space-y-4">
+        <div class="text-center">
+          <div class="text-6xl">🚗</div>
+          <h2 class="mt-2 text-xl font-semibold text-slate-900">{{ t('menu.appName') }}</h2>
+          <p class="text-sm text-slate-500">{{ t('menu.version') }}: {{ APP_VERSION }}</p>
+        </div>
+        <p class="whitespace-pre-line rounded-xl bg-white p-4 leading-relaxed text-slate-700 shadow-sm">{{ t('menu.aboutText') }}</p>
+      </div>
     </SubPage>
     <SubPage v-if="page === 'contact'" :title="t('menu.contact')" @back="page = ''">
       <div class="space-y-3">

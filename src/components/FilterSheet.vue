@@ -71,10 +71,12 @@ const lbl = 'mb-1 block text-sm font-medium text-slate-700';
         <label :class="lbl">{{ t('fields.status') }}</label>
         <select v-model="d.status" :class="input"><option value="">{{ t('select.all') }}</option><option v-for="o in STATUSES" :key="o" :value="o">{{ t(`enum.status.${o}`) }}</option></select>
       </div>
-      <div class="grid grid-cols-2 gap-2 pt-2">
+    </div>
+    <template #footer>
+      <div class="grid grid-cols-2 gap-2">
         <button class="h-12 rounded-lg bg-slate-200 font-medium text-slate-800 active:bg-slate-300" @click="reset">{{ t('actions.reset') }}</button>
         <button class="h-12 rounded-lg bg-indigo-600 font-medium text-white active:bg-indigo-700" @click="apply">{{ t('actions.apply') }}</button>
       </div>
-    </div>
+    </template>
   </BottomSheet>
 </template>

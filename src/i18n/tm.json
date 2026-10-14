@@ -118,7 +118,9 @@
     "dark": "Garaňky",
     "version": "Wersiýa",
     "phone": "Telefon",
-    "email": "E-poçta"
+    "email": "E-poçta",
+    "appName": "Maşyn bazar",
+    "aboutText": "Bu programma awtomobil bazarynda ulaglary çalt tapmak üçin döredildi.\n\n🚗 Ulaglar: marka, model, ýyl, ýöreýiş we beýleki maglumatlar bilen ulaglary ýazyp saklaň we Filtr arkaly saýlaň.\n\n🗺️ Karta: bazaryň ýerini setir we sütünlerden ybarat tor görnüşinde görüň. Her öýjükde birnäçe ulag bolup biler. Ulagyň ýerine basyp, ony kartada tapyp bilersiňiz.\n\n⚙️ Sazlamalar: Karta, marka, model we ýyl sanawlaryny özüňiz dolandyryp bilersiňiz.\n\nÄhli maglumatlar diňe telefonyňyzda saklanýar, internet gerek däl."
   },
   "grid": {
     "title": "Bazar kartasy",
@@ -162,6 +164,8 @@
     "expiring": "Giriş möhleti {n} günden gutarýar"
   },
   "nav": {
-    "exitHint": "Çykmak üçin ýene bir gezek basyň"
+    "exitConfirm": "Çyndanam çykmak isleýärsiňizmi?",
+    "yes": "Hawa",
+    "no": "Ýok"
   }
 }

@@ -10,7 +10,7 @@ import CarForm from './components/CarForm.vue';
 import CarsView from './views/CarsView.vue';
 import MapView from './views/MapView.vue';
 import MenuView from './views/MenuView.vue';
-import { exitHint, initBackNavigation } from './nav';
+import { confirmExit, exitConfirm, initBackNavigation } from './nav';
 import { loadCars } from './stores/cars';
 import { loadCatalog } from './stores/catalog';
 import { loadGrid } from './stores/grid';
@@ -46,7 +46,13 @@ watch(now, touchAccess);
       <CarDetail />
     </div>
   </template>
-  <div v-if="exitHint" class="pointer-events-none fixed inset-x-0 bottom-24 z-[200] flex justify-center px-4">
-    <span class="rounded-full bg-slate-800 px-4 py-2 text-sm text-white shadow-lg">{{ t('nav.exitHint') }}</span>
+  <div v-if="exitConfirm" class="fixed inset-0 z-[300] flex items-center justify-center bg-black/50 p-6" @click.self="exitConfirm = false">
+    <div class="w-full max-w-xs space-y-4 rounded-2xl bg-white p-5 shadow-xl">
+      <p class="text-center text-lg font-medium text-slate-900">{{ t('nav.exitConfirm') }}</p>
+      <div class="grid grid-cols-2 gap-2">
+        <button class="h-12 rounded-lg bg-slate-200 font-medium text-slate-800 active:bg-slate-300" @click="exitConfirm = false">{{ t('nav.no') }}</button>
+        <button class="h-12 rounded-lg bg-red-600 font-medium text-white active:bg-red-700" @click="confirmExit">{{ t('nav.yes') }}</button>
+      </div>
+    </div>
   </div>
 </template>

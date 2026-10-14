@@ -9,7 +9,7 @@ import { ui } from './stores/ui';
  */
 interface Layer { close: () => void }
 const layers: Layer[] = [];
-export const exitHint = ref(false);
+export const exitConfirm = ref(false);
 
 /** Açyk wagtynda "geri" düwmesi bilen ýapylýan gatlak (sheet, sahypa, forma). */
 export function useBackLayer(isOpen: () => boolean, close: () => void) {
@@ -39,11 +39,13 @@ export function initBackNavigation() {
       ui.tab = 'cars';
       return arm();
     }
-    // Kök ekran: 2 sekunt içinde ýene basylsa çykýar (garawul ýazgy ýok).
-    exitHint.value = true;
-    setTimeout(() => {
-      exitHint.value = false;
-      arm();
-    }, 2000);
+    // Kök ekran: çykmazdan öň soraýarys. Garawul ýazgy ýerinde galýar.
+    exitConfirm.value = !exitConfirm.value;
+    arm();
   });
+}
+
+export function confirmExit() {
+  exitConfirm.value = false;
+  (window as unknown as { AndroidApp?: { exit(): void } }).AndroidApp?.exit();
 }

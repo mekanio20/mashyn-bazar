@@ -23,7 +23,6 @@ const open = ref(false);
 const creating = ref(false);
 const query = ref('');
 const newName = ref('');
-const searchEl = ref<HTMLInputElement>();
 const newEl = ref<HTMLInputElement>();
 
 const selected = computed(() => props.options.find((o) => o.id === props.modelValue));
@@ -36,12 +35,10 @@ const canAddQuery = computed(() => {
   return props.allowCreate && q && !props.options.some((o) => o.label.toLowerCase() === q.toLowerCase());
 });
 
-async function openList() {
+function openList() {
   if (props.disabled) return;
   query.value = '';
   open.value = true;
-  await nextTick();
-  searchEl.value?.focus();
 }
 function pick(id: number | null) {
   emit('update:modelValue', id);
@@ -99,7 +96,6 @@ function submitCreate() {
 
     <BottomSheet :open="open" :title="label" @close="open = false">
       <input
-        ref="searchEl"
         v-model="query"
         type="search"
         :inputmode="numeric ? 'numeric' : undefined"
