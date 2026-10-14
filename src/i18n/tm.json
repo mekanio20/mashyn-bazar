@@ -1,0 +1,69 @@
+{
+  "tabs": { "cars": "Ulaglar", "map": "Karta", "menu": "Menýu" },
+  "addCar": "Ulag",
+  "search": "Gözleg: marka, model, nomer, telefon...",
+  "filter": "Filtr",
+  "sort": { "new": "Täze", "year": "Ýyl", "km": "Ýöreýiş" },
+  "noCars": "Entek ulag ýok",
+  "noCarsHint": "Ulag goşmak üçin ýokardaky «+ Ulag» düwmesine basyň.",
+  "noResults": "Hiç zat tapylmady",
+  "fields": {
+    "brand": "Marka", "model": "Model", "year": "Ýyl", "cell": "Ýeri (kartada)",
+    "mileage": "Ýöreýşi (km)", "transmission": "Korobka", "bodyType": "Kuzow", "condition": "Ýagdaýy",
+    "status": "Satuw ýagdaýy", "plate": "Nomeri", "color": "Reňki", "ownerName": "Eýesiniň ady",
+    "ownerPhone": "Telefon", "note": "Bellik", "yearFrom": "Ýyl (başy)", "yearTo": "Ýyl (soňy)",
+    "kmFrom": "Km (başy)", "kmTo": "Km (soňy)"
+  },
+  "enum": {
+    "transmission": { "manual": "Mehaniki", "auto": "Awtomat" },
+    "bodyType": { "sedan": "Sedan", "hatchback": "Hetçbek", "suv": "Krossower", "pickup": "Pikap", "minivan": "Miniwen" },
+    "condition": { "new": "Täze", "used": "Ulanylan", "damaged": "Zaýalanan" },
+    "status": { "available": "Satylýar", "reserved": "Bron edilen", "sold": "Satyldy" }
+  },
+  "form": {
+    "newTitle": "Täze ulag", "editTitle": "Ulagy üýtget", "more": "Goşmaça maglumat",
+    "selectBrand": "Marka saýlaň", "selectModel": "Model saýlaň", "selectBrandFirst": "Ilki marka saýlaň",
+    "selectYear": "Ýyl saýlaň", "selectCell": "Kartadan ýer saýlaň", "required": "Hökman doldurmaly",
+    "plateTaken": "Bu nomer eýýäm bar"
+  },
+  "select": { "search": "Gözleg...", "add": "Goş", "addNew": "Täze goş", "name": "Ady", "empty": "Hiç zat ýok", "all": "Hemmesi", "clear": "Arassala" },
+  "actions": {
+    "save": "Ýatda sakla", "cancel": "Ýatyr", "delete": "Poz", "edit": "Üýtget", "call": "Jaň et",
+    "showOnMap": "Kartada görkez", "apply": "Ulan", "reset": "Arassala", "close": "Ýap", "back": "Yza",
+    "confirmDelete": "Bu ulag pozulsynmy?", "add": "Goş", "copy": "Göçür"
+  },
+  "map": {
+    "title": "Karta", "empty": "Boş", "cars": "ulag", "addHere": "Şu ýere ulag goş",
+    "zoomIn": "Ulalt", "zoomOut": "Kiçelt", "noPlace": "Ýeri ýok", "hint": "Ýeri görmek üçin öýjüge basyň"
+  },
+  "menu": {
+    "title": "Menýu", "language": "Dil", "settings": "Sazlamalar", "about": "Programma barada",
+    "contact": "Aragatnaşyk", "access": "Giriş möhleti", "daysLeft": "{n} gün galdy",
+    "gridSettings": "Bazar kartasy", "catalog": "Marka / Model / Ýyl", "theme": "Reňk", "light": "Açyk", "dark": "Garaňky",
+    "data": "Maglumatlar", "version": "Wersiýa", "phone": "Telefon", "email": "E-poçta"
+  },
+  "grid": {
+    "title": "Bazar kartasy", "rows": "Setirler", "cols": "Sütünler", "addRow": "Setir goş", "addCol": "Sütün goş",
+    "cells": "Öýjükler (basyp ýapyp/açyp bolýar)", "closed": "ýapyk",
+    "confirmRemove": "Bu ýerde {n} ulag bar. Pozsaňyz, olaryň ýeri boş galar. Dowam edilsinmi?",
+    "confirmClose": "Bu öýjükde {n} ulag bar. Ýapsaňyz, olaryň ýeri boş galar. Dowam edilsinmi?",
+    "tip": "Ady üýtgetmek üçin ýazgyny üýtgediň."
+  },
+  "catalog": {
+    "title": "Marka / Model / Ýyl", "brands": "Markalar", "models": "Modeller", "years": "Goşulan ýyllar",
+    "addBrand": "Marka goş", "addModel": "Model goş", "addYear": "Ýyl goş",
+    "inUse": "Bu ýazgy {n} ulagda ulanylýar, pozup bolmaz.", "confirmDelete": "Pozulsynmy?", "noModels": "Model ýok"
+  },
+  "data": {
+    "title": "Maglumatlar", "export": "Ätiýaçlyk göçürme", "exportHint": "Ähli maglumatlar buferde göçürildi we faýl hökmünde ýüklendi.",
+    "import": "Ätiýaçlykdan dikelt", "importFile": "Faýl saýla", "importPaste": "Ýa-da bu ýere JSON ýazyň", "importOk": "Dikeldildi",
+    "importFail": "Faýl nädogry", "importWarn": "Häzirki maglumatlar çalşyrylar!", "clear": "Ähli maglumaty poz",
+    "clearConfirm": "Ähli ulaglar, markalar, modeller we karta pozular. Dowam edilsinmi?", "cleared": "Pozuldy"
+  },
+  "lock": {
+    "title": "Girmek üçin kod giriziň", "expiredTitle": "Giriş möhleti gutardy",
+    "hint": "Kody almak üçin biz bilen habarlaşyň.", "placeholder": "XXXX-XXXX-XXXX-XXXX",
+    "activate": "Aktiwleşdir", "wrong": "Kod nädogry", "clock": "Telefonyň wagtyny dogry goýuň", "ok": "Aktiw edildi"
+  },
+  "warn": { "expiring": "Giriş möhleti {n} günden gutarýar" }
+}

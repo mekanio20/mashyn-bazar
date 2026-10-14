@@ -1,9 +1,9 @@
 {
   "id": "/",
   "scope": "/",
-  "name": "Kayıtlarım",
-  "short_name": "Kayıtlarım",
-  "description": "Çevrimdışı çalışan basit CRUD uygulaması",
+  "name": "Awtobazar",
+  "short_name": "Awtobazar",
+  "description": "Awtobazar: ulaglary çalt tapmak",
   "display": "standalone",
   "start_url": "/",
   "orientation": "portrait",

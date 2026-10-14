@@ -1,4 +1,29 @@
 @import 'tailwindcss';
 
-html, body { background: #f8fafc; }
+html, body { background: var(--color-slate-50); color: var(--color-slate-900); }
 body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+
+/* Koyu tema: Tailwind'in renk değişkenlerini ters çeviriyoruz, bileşenlerde dark: sınıfı gerekmez. */
+.dark {
+  color-scheme: dark;
+  --color-white: #1e293b;
+  --color-slate-50: #0f172a;
+  --color-slate-100: #1e293b;
+  --color-slate-200: #334155;
+  --color-slate-300: #475569;
+  --color-slate-400: #64748b;
+  --color-slate-500: #94a3b8;
+  --color-slate-600: #cbd5e1;
+  --color-slate-700: #e2e8f0;
+  --color-slate-800: #f1f5f9;
+  --color-slate-900: #f8fafc;
+  --color-indigo-50: #312e81;
+  --color-indigo-100: #3730a3;
+  --color-indigo-700: #c7d2fe;
+  --color-green-100: #14532d;
+  --color-green-700: #bbf7d0;
+  --color-amber-100: #78350f;
+  --color-amber-700: #fde68a;
+  --color-red-100: #7f1d1d;
+  --color-red-700: #fecaca;
+}
