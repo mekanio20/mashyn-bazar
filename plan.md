@@ -123,3 +123,4 @@ Tam ekran, tek sütun. Üstte zorunlu alanlar: **Marka, Model, Yıl** (BaseSelec
 # Erishim
 
 Uygulamaya ilk girdigim zaman kod sorsun, bu kod uygulamaya 1 ay erishim verecek, 1 ay bitdikden sonra erishim kapanacak yine parol ekrani gelecek, kodu uygulama icinde gomecegiz ve sadece ben bilecegim
+
