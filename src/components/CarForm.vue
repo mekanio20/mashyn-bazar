@@ -6,11 +6,13 @@ import CellPicker from './CellPicker.vue';
 import { addBrand, addModel, addYear, brands, models, years } from '../stores/catalog';
 import { plateTaken, saveCar } from '../stores/cars';
 import { cellExists } from '../stores/grid';
+import { useBackLayer } from '../nav';
 import { ui } from '../stores/ui';
 import { BODY_TYPES, CONDITIONS, STATUSES, TRANSMISSIONS, type Car } from '../types';
 
 const { t } = useI18n();
 const emit = defineEmits<{ close: [] }>();
+useBackLayer(() => true, () => emit('close'));
 const car: Car | null = ui.editing;
 
 const f = reactive({

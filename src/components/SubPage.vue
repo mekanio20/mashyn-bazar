@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
+import { useBackLayer } from '../nav';
+
 defineProps<{ title: string }>();
-defineEmits<{ back: [] }>();
+const emit = defineEmits<{ back: [] }>();
+useBackLayer(() => true, () => emit('back'));
 const { t } = useI18n();
 </script>
 

@@ -3,8 +3,7 @@ import { computed, nextTick, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BottomSheet from '../components/BottomSheet.vue';
 import CarCard from '../components/CarCard.vue';
-import SearchBox from '../components/SearchBox.vue';
-import { cars, carsInCell, matchesSearch, searchActive } from '../stores/cars';
+import { cars, carsInCell } from '../stores/cars';
 import { cellId, cellName, grid } from '../stores/grid';
 import { openForm, ui } from '../stores/ui';
 
@@ -12,11 +11,6 @@ const { t } = useI18n();
 const size = ref(56);
 const openCell = ref<string | null>(null);
 
-const hitCells = computed(() => {
-  const s = new Set<string>();
-  if (searchActive.value) for (const c of cars.value) if (c.cellId && matchesSearch(c)) s.add(c.cellId);
-  return s;
-});
 const counts = computed(() => {
   const m = new Map<string, number>();
   for (const c of cars.value) if (c.cellId) m.set(c.cellId, (m.get(c.cellId) ?? 0) + 1);
@@ -27,7 +21,6 @@ const cellCars = computed(() => (openCell.value ? carsInCell(openCell.value) : [
 function cellClass(id: string) {
   const n = counts.value.get(id) ?? 0;
   if (ui.focusCell === id) return 'bg-amber-400 text-amber-950 ring-4 ring-amber-300 animate-pulse';
-  if (searchActive.value) return hitCells.value.has(id) ? 'bg-amber-400 text-amber-950 ring-2 ring-amber-500' : 'bg-slate-100 text-slate-300';
   return n ? 'bg-green-500 text-white' : 'bg-slate-200 text-slate-500';
 }
 
@@ -46,7 +39,6 @@ watch(() => ui.focusCell, async (id) => {
 
 <template>
   <div class="space-y-3 p-4 pb-24">
-    <SearchBox />
     <div class="flex items-center justify-between">
       <p class="text-sm text-slate-500">{{ t('map.hint') }}</p>
       <div class="flex gap-1">

@@ -10,6 +10,7 @@ import CarForm from './components/CarForm.vue';
 import CarsView from './views/CarsView.vue';
 import MapView from './views/MapView.vue';
 import MenuView from './views/MenuView.vue';
+import { exitHint, initBackNavigation } from './nav';
 import { loadCars } from './stores/cars';
 import { loadCatalog } from './stores/catalog';
 import { loadGrid } from './stores/grid';
@@ -27,6 +28,7 @@ onMounted(async () => {
   now.value = Date.now();
   touchAccess();
   ready.value = true;
+  initBackNavigation();
 });
 watch(now, touchAccess);
 </script>
@@ -44,4 +46,7 @@ watch(now, touchAccess);
       <CarDetail />
     </div>
   </template>
+  <div v-if="exitHint" class="pointer-events-none fixed inset-x-0 bottom-24 z-[200] flex justify-center px-4">
+    <span class="rounded-full bg-slate-800 px-4 py-2 text-sm text-white shadow-lg">{{ t('nav.exitHint') }}</span>
+  </div>
 </template>

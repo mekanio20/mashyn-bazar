@@ -1,0 +1,7 @@
+- [x] Sistemadaky crud has ansat etmeli
+- [x] Bash sahypadan [Taze, Yyl, Yoreyis] setirini ayyrmaly
+- [x] Search ayyrmaly
+- [x] Mashynlar list sahypada Karta oyjugine basamda karta acylmaly
+- [x] Menyu sahypada Maglumatlar bolumi ayrylmaly
+- [x] Menyu sahypada Marka / Model / Yyl / sazlamasyna basylanda icinde 3 sany card cyksyn, onun icine basylanda crud cyksyn
+- [x] Menyu sahypada Renk ashagynda boshluk olmasin

@@ -3,14 +3,12 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import CarCard from '../components/CarCard.vue';
 import FilterSheet from '../components/FilterSheet.vue';
-import SearchBox from '../components/SearchBox.vue';
-import { activeFilterCount, cars, filters, resetFilters, sort, visibleCars, type SortKey } from '../stores/cars';
+import { activeFilterCount, cars, filters, resetFilters, visibleCars } from '../stores/cars';
 import { brandName, modelName } from '../stores/catalog';
 import { ui } from '../stores/ui';
 
 const { t } = useI18n();
 const filterOpen = ref(false);
-const sorts: SortKey[] = ['new', 'year', 'km'];
 
 function chips() {
   const f = filters;
@@ -31,8 +29,7 @@ function chips() {
 <template>
   <div class="space-y-3 p-4 pb-24">
     <div class="flex gap-2">
-      <div class="min-w-0 flex-1"><SearchBox /></div>
-      <button class="relative h-12 shrink-0 rounded-lg bg-white px-4 font-medium text-slate-700 shadow-sm active:bg-slate-50" @click="filterOpen = true">
+      <button class="relative h-12 w-full rounded-lg bg-white px-4 font-medium text-slate-700 shadow-sm active:bg-slate-50" @click="filterOpen = true">
         ⚙ {{ t('filter') }}
         <span v-if="activeFilterCount" class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1 text-xs text-white">{{ activeFilterCount }}</span>
       </button>
@@ -41,11 +38,6 @@ function chips() {
     <div v-if="activeFilterCount" class="flex flex-wrap gap-2">
       <button v-for="c in chips()" :key="c.label" class="rounded-full bg-indigo-100 px-3 py-1 text-sm text-indigo-700" @click="c.clear">{{ c.label }} ×</button>
       <button class="rounded-full px-3 py-1 text-sm text-slate-500 underline" @click="resetFilters">{{ t('actions.reset') }}</button>
-    </div>
-
-    <div class="flex gap-2">
-      <button v-for="s in sorts" :key="s" class="rounded-full px-3 py-1 text-sm" :class="sort === s ? 'bg-slate-800 text-white' : 'bg-white text-slate-600'" @click="sort = s">{{ t(`sort.${s}`) }}</button>
-      <span class="ml-auto self-center text-sm text-slate-400">{{ visibleCars.length }}</span>
     </div>
 
     <div v-if="!cars.length" class="py-16 text-center">

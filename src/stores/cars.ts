@@ -2,18 +2,8 @@ import { computed, reactive, ref } from 'vue';
 import { getDb } from '../db';
 import type { Car } from '../types';
 import { brandName, modelName } from './catalog';
-import { cellName } from './grid';
 
 export const cars = ref<Car[]>([]);
-export const search = ref('');
-const debounced = ref('');
-let timer: ReturnType<typeof setTimeout> | undefined;
-export function setSearch(v: string) {
-  search.value = v;
-  clearTimeout(timer);
-  timer = setTimeout(() => (debounced.value = v), 150);
-}
-
 export interface Filters {
   brandId: number | null;
   modelId: number | null;
@@ -45,15 +35,6 @@ export async function loadCars() {
 
 export const carTitle = (c: Car) => `${brandName(c.brandId)} ${modelName(c.modelId)} ${c.year}`;
 
-const haystack = (c: Car) =>
-  [carTitle(c), c.plate, c.color, c.ownerName, c.ownerPhone, c.note, cellName(c.cellId)].join(' ').toLowerCase();
-
-export const matchesSearch = (c: Car) => {
-  const q = debounced.value.trim().toLowerCase();
-  return !q || q.split(/\s+/).every((w) => haystack(c).includes(w));
-};
-export const searchActive = computed(() => !!debounced.value.trim());
-
 function matchesFilters(c: Car) {
   const f = filters;
   if (f.brandId && c.brandId !== f.brandId) return false;
@@ -70,7 +51,7 @@ function matchesFilters(c: Car) {
 }
 
 export const visibleCars = computed(() => {
-  const list = cars.value.filter((c) => matchesSearch(c) && matchesFilters(c));
+  const list = cars.value.filter(matchesFilters);
   const s = sort.value;
   return list.sort((a, b) =>
     s === 'year' ? b.year - a.year : s === 'km' ? (a.mileage ?? Infinity) - (b.mileage ?? Infinity) : b.createdAt - a.createdAt,

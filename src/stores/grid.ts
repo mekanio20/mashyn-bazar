@@ -63,3 +63,12 @@ export function toggleCell(id: string) {
   else d.push(id);
   return persist();
 }
+
+export function moveLine(kind: 'rows' | 'cols', id: string, dir: -1 | 1) {
+  const list = grid.value[kind];
+  const i = list.findIndex((l) => l.id === id);
+  const j = i + dir;
+  if (i < 0 || j < 0 || j >= list.length) return;
+  [list[i], list[j]] = [list[j], list[i]];
+  return persist();
+}
