@@ -51,6 +51,6 @@ jobs:
       - name: Üretilen APK Dosyasını Kaydet (Artifacts)
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: Maşyn bazar
+          path: android/app/build/outputs/apk/debug/mashyn_bazar.apk
           if-no-files-found: error
