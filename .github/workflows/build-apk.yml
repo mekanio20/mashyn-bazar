@@ -52,5 +52,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Maşyn bazar
-          path: android/app/build/outputs/apk/debug/mashyn_bazar.apk
+          path: android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
