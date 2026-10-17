@@ -3,13 +3,14 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { daysLeft } from '../access';
 import CatalogSettings from '../components/CatalogSettings.vue';
+import DataTransfer from '../components/DataTransfer.vue';
 import GridSettings from '../components/GridSettings.vue';
 import SubPage from '../components/SubPage.vue';
 import { APP_VERSION, CONTACT_EMAIL, CONTACT_PHONE } from '../config';
 import { settings } from '../stores/settings';
 
 const { t } = useI18n();
-const page = ref<'' | 'grid' | 'catalog' | 'about' | 'contact'>('');
+const page = ref<'' | 'grid' | 'catalog' | 'transfer' | 'about' | 'contact'>('');
 const item = 'flex h-14 w-full items-center justify-between rounded-xl bg-white px-4 text-left shadow-sm active:bg-slate-50';
 </script>
 
@@ -30,6 +31,7 @@ const item = 'flex h-14 w-full items-center justify-between rounded-xl bg-white 
       <h2 class="text-sm font-semibold uppercase text-slate-500">{{ t('menu.settings') }}</h2>
       <button :class="item" @click="page = 'grid'">🗺️ {{ t('menu.gridSettings') }}<span class="text-slate-400">›</span></button>
       <button :class="item" @click="page = 'catalog'">🚗 {{ t('menu.catalog') }}<span class="text-slate-400">›</span></button>
+      <button :class="item" @click="page = 'transfer'">💾 {{ t('menu.transfer') }}<span class="text-slate-400">›</span></button>
       <div :class="item">
         <span>🎨 {{ t('menu.theme') }}</span>
         <span class="flex gap-1">
@@ -43,6 +45,7 @@ const item = 'flex h-14 w-full items-center justify-between rounded-xl bg-white 
 
     <GridSettings v-if="page === 'grid'" @back="page = ''" />
     <CatalogSettings v-if="page === 'catalog'" @back="page = ''" />
+    <DataTransfer v-if="page === 'transfer'" @back="page = ''" />
     <SubPage v-if="page === 'about'" :title="t('menu.about')" @back="page = ''">
       <div class="space-y-4">
         <div class="text-center">

@@ -8,3 +8,4 @@
 - [x] Androidde cykysh buttonuna basanda Cyndanam cykmak isleyarsinizmi confirm cyksyn hawa basanda cyksyn, menyudaki bir bolume girende androidde cykmak buttonuna basylanda menyu sahypasyna cyksyn
 - [x] Select basylanda search focus bolmasyn keyboard cykmasyn
 - [x] Headerdaky prev icony biraz bildirip dursun kicirak gorunyar shu wagt, Programma barada sahypasynda programmanyn dushundirilishi yazylsyn
+- [x] Sazlamalar boluminde Export / Import bolumi

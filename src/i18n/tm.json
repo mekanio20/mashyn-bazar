@@ -112,7 +112,8 @@
     "access": "Giriş möhleti",
     "daysLeft": "{n} gün galdy",
     "gridSettings": "Bazar kartasy",
-    "catalog": "Marka / Model / Ýyl",
+    "transfer": "Export / Import",
+    "catalog": "Marka / Model",
     "theme": "Reňk",
     "light": "Açyk",
     "dark": "Garaňky",
@@ -120,7 +121,18 @@
     "phone": "Telefon",
     "email": "E-poçta",
     "appName": "Maşyn bazar",
-    "aboutText": "Bu programma awtomobil bazarynda ulaglary çalt tapmak üçin döredildi.\n\n🚗 Ulaglar: marka, model, ýyl, ýöreýiş we beýleki maglumatlar bilen ulaglary ýazyp saklaň we Filtr arkaly saýlaň.\n\n🗺️ Karta: bazaryň ýerini setir we sütünlerden ybarat tor görnüşinde görüň. Her öýjükde birnäçe ulag bolup biler. Ulagyň ýerine basyp, ony kartada tapyp bilersiňiz.\n\n⚙️ Sazlamalar: Karta, marka, model we ýyl sanawlaryny özüňiz dolandyryp bilersiňiz.\n\nÄhli maglumatlar diňe telefonyňyzda saklanýar, internet gerek däl."
+    "aboutText": "Bu programma awtomobil bazarynda ulaglary çalt tapmak üçin döredildi.\n\n🚗 Ulaglar: marka, model, ýyl, ýöreýiş we beýleki maglumatlar bilen ulaglary ýazyp saklaň we Filtr arkaly saýlaň.\n\n🗺️ Karta: bazaryň ýerini setir we sütünlerden ybarat tor görnüşinde görüň. Her öýjükde birnäçe ulag bolup biler. Ulagyň ýerine basyp, ony kartada tapyp bilersiňiz.\n\n⚙️ Sazlamalar: Karta, marka we model sanawlaryny özüňiz dolandyryp bilersiňiz.\n\nÄhli maglumatlar diňe telefonyňyzda saklanýar, internet gerek däl."
+  },
+  "transfer": {
+    "title": "Export / Import",
+    "export": "Export",
+    "import": "Import",
+    "copy": "Göçür",
+    "copied": "Göçürildi",
+    "paste": "Export edilen JSON-y şu ýere ýelmäň",
+    "invalid": "JSON nädogry",
+    "confirm": "Häzirki ähli maglumatlar pozulyp, import edilenler bilen çalşylar. Dowam edilsinmi?",
+    "done": "Maglumatlar import edildi"
   },
   "grid": {
     "title": "Bazar kartasy",
@@ -139,13 +151,11 @@
     "tapHint": "Ady üýtgetmek ýa-da pozmak üçin sütüne/setire basyň. Öýjüge basyp ýapyp/açyp bolýar."
   },
   "catalog": {
-    "title": "Marka / Model / Ýyl",
+    "title": "Marka / Model",
     "brands": "Markalar",
     "models": "Modeller",
-    "years": "Goşulan ýyllar",
     "addBrand": "Marka goş",
     "addModel": "Model goş",
-    "addYear": "Ýyl goş",
     "inUse": "Bu ýazgy {n} ulagda ulanylýar, pozup bolmaz.",
     "confirmDelete": "Pozulsynmy?",
     "noModels": "Model ýok"

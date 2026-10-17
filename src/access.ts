@@ -1,10 +1,9 @@
 import { computed } from 'vue';
-import { ACCESS_HASHES, ACCESS_SALT } from './access-hash';
+import { ACCESS_CODES, ACCESS_SALT } from './access-hash';
 import { settings } from './stores/settings';
 import { ref } from 'vue';
 
 const DAY = 24 * 60 * 60 * 1000;
-export const ACCESS_DAYS = 30;
 
 export const now = ref(Date.now());
 setInterval(() => (now.value = Date.now()), 30_000);
@@ -35,9 +34,10 @@ export async function activate(code: string): Promise<ActivateResult> {
   const t = Date.now();
   if (clockTampered(t)) return 'clock';
   const hash = await sha256Hex(ACCESS_SALT + normalize(code));
-  if (!ACCESS_HASHES.includes(hash)) return 'wrong';
+  const entry = ACCESS_CODES.find((c) => c.hash === hash);
+  if (!entry) return 'wrong';
   now.value = t;
-  settings.accessUntil = t + ACCESS_DAYS * DAY;
+  settings.accessUntil = t + entry.days * DAY;
   settings.lastSeenAt = t;
   return 'ok';
 }

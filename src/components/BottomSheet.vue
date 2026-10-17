@@ -14,6 +14,9 @@ useBackLayer(() => props.open, () => emit('close'));
           <h2 class="text-lg font-semibold text-slate-900">{{ title }}</h2>
           <button class="-mr-2 h-10 w-10 rounded-full text-2xl text-slate-500 active:bg-slate-100" aria-label="close" @click="emit('close')">×</button>
         </div>
+        <div v-if="$slots.header" class="px-4 pt-2">
+          <slot name="header" />
+        </div>
         <div class="overflow-y-auto px-4 pb-6 pt-2" :style="$slots.footer ? undefined : 'padding-bottom: calc(1.5rem + env(safe-area-inset-bottom))'">
           <slot />
         </div>

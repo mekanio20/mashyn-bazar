@@ -95,16 +95,18 @@ function submitCreate() {
     <p v-if="error" class="mt-1 text-sm text-red-600">{{ error }}</p>
 
     <BottomSheet :open="open" :title="label" @close="open = false">
-      <input
-        v-model="query"
-        type="search"
-        :inputmode="numeric ? 'numeric' : undefined"
-        :placeholder="t('select.search')"
-        class="mb-2 h-12 w-full rounded-lg border border-slate-300 bg-white px-3 outline-none focus:border-indigo-500"
-      />
-      <button v-if="canAddQuery" type="button" class="mb-1 flex h-12 w-full items-center gap-2 rounded-lg bg-indigo-50 px-3 text-indigo-700 active:bg-indigo-100" @click="addFromQuery">
-        <span class="text-xl">+</span> {{ t('select.add') }}: «{{ query.trim() }}»
-      </button>
+      <template #header>
+        <input
+          v-model="query"
+          type="search"
+          :inputmode="numeric ? 'numeric' : undefined"
+          :placeholder="t('select.search')"
+          class="mb-2 h-12 w-full rounded-lg border border-slate-300 bg-white px-3 outline-none focus:border-indigo-500"
+        />
+        <button v-if="canAddQuery" type="button" class="mb-1 flex h-12 w-full items-center gap-2 rounded-lg bg-indigo-50 px-3 text-indigo-700 active:bg-indigo-100" @click="addFromQuery">
+          <span class="text-xl">+</span> {{ t('select.add') }}: «{{ query.trim() }}»
+        </button>
+      </template>
       <p v-if="!list.length && !canAddQuery" class="py-6 text-center text-slate-400">{{ t('select.empty') }}</p>
       <ul>
         <li v-for="o in list" :key="o.id">

@@ -3,7 +3,7 @@ import { computed, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BaseSelect from './BaseSelect.vue';
 import CellPicker from './CellPicker.vue';
-import { addBrand, addModel, addYear, brands, models, years } from '../stores/catalog';
+import { addBrand, addModel, brands, models, years } from '../stores/catalog';
 import { plateTaken, saveCar } from '../stores/cars';
 import { cellExists } from '../stores/grid';
 import { useBackLayer } from '../nav';
@@ -62,11 +62,6 @@ async function createBrand(name: string) {
 async function createModel(name: string) {
   if (f.brandId) f.modelId = await addModel(f.brandId, name);
 }
-async function createYear(text: string) {
-  const y = await addYear(text);
-  if (y) f.year = y;
-}
-
 async function submit() {
   tried.value = true;
   if (Object.values(errors.value).some(Boolean)) return;
@@ -112,7 +107,7 @@ const lbl = 'mb-1 block text-sm font-medium text-slate-700';
       />
       <BaseSelect
         v-model="f.year" :options="yearOptions" :label="t('fields.year')" :placeholder="t('form.selectYear')"
-        allow-create numeric :error="show('year')" @create="createYear"
+        :error="show('year')"
       />
       <CellPicker v-model="f.cellId" :label="t('fields.cell')" :error="show('cell')" />
 
